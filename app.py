@@ -25,7 +25,7 @@ def create_app(test_config=None):
           "succss":True,
           "massage":"Welcome to Agency flask app"
       })
-      
+
   # -- Actors Region ----- #
   @app.route('/actors', methods=['GET'])
   def get_actors():
@@ -183,6 +183,9 @@ def create_app(test_config=None):
 
 app = create_app()
 
+@app.route('/',methods=['Get'])
+def index():
+    return "<h1> Welcome Home </h1>"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
