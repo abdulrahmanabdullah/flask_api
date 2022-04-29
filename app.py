@@ -8,7 +8,6 @@ from functools import wraps
 from datetime import date
 from models import setup_db, Actor, Movie
 from urllib.request import urlopen
-
 from auth import requires_auth, get_token_auth_header, AuthError
 
 

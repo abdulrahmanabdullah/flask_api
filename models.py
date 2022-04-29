@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from sqlalchemy import Column, String, Integer, Date, create_engine 
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from datetime import datetime
 import json 
 
@@ -31,6 +32,7 @@ def setup_db(app, database_path=database_path):
     # avoid leak connection
     db.init_app(app) 
     db.create_all()
+    Migrate(app, db)
 
 # Actors table
 class Actor(db.Model):
