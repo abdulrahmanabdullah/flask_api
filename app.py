@@ -24,6 +24,10 @@ def create_app(test_config=None):
   @app.route('/actors', methods=['GET'])
   def get_actors():
       actors = Actor.query.all()
+
+      if(len(actors) == 0):
+          abort(404, "No actors to found !!")
+
       return jsonify({
           "success":True,
           "actors":[actor.format() for actor in actors]
@@ -38,6 +42,9 @@ def create_app(test_config=None):
       name = body.get('name')
       gender = body.get('gender')
       age = body.get('age')
+      
+      if any(arg is None for arg in [name, gender, age]) or '' in [name, gender,age]:
+          abort(422, "name, gender and age are require")
 
       actor = Actor(name, gender, age)
       actor.insert()
@@ -55,7 +62,8 @@ def create_app(test_config=None):
           actor = Actor.query.filter(Actor.id == actor_id).one_or_none()
           # if actor not exists 
           if actor is None:
-              abort(404)
+              abort(404, "Not found actor")
+
           # figurout what's change or keeps old date 
           body = request.json
           name = body.get('name', None) 
@@ -93,6 +101,7 @@ def create_app(test_config=None):
 
 ### ----------- End Actors Region --------------###
 
+### ----------- Movies Region --------------###
 #--- Get movies Done---#
   @app.route('/movies', methods=['GET'])
   def get_movies():
@@ -127,7 +136,7 @@ def create_app(test_config=None):
           movie = Movie.query.filter(Movie.id == movie_id).one_or_none()
           # if actor not exists 
           if movie is None:
-              abort(404)
+              abort(400, '400 bad request')
           body = request.json
           #Check values befor update
           title = body.get('title',None)
@@ -160,24 +169,13 @@ def create_app(test_config=None):
           return jsonify({"success":True,"delete":movie_id}),200
       except Exception as exp:
           print(f'some error ocurred in delete {exp}')
+          abort(422)
 
-
-
-
+###-------  End Movie Region ------------###
 
   return app
 
 app = create_app()
-
-
-
-# Routes 
-@app.route('/')
-def index():
-    return "it is work fine "
-
-
-
 
 
 if __name__ == '__main__':
