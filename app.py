@@ -19,6 +19,13 @@ def create_app(test_config=None):
   setup_db(app)
   CORS(app)
 
+  @app.route('/', methods=["GET"])
+  def home():
+      return jsonify({
+          "succss":True,
+          "massage":"Welcome to Agency flask app"
+      })
+      
   # -- Actors Region ----- #
   @app.route('/actors', methods=['GET'])
   def get_actors():
