@@ -183,7 +183,7 @@ def create_app(test_config=None):
 
 app = create_app()
 
-@app.route('/',methods=['Get'])
+@app.route('/',methods=['GET'])
 def index():
     return "<h1> Welcome Home </h1>"
 
