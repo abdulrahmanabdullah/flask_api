@@ -20,11 +20,8 @@ def create_app(test_config=None):
   CORS(app)
 
   @app.route('/', methods=["GET"])
-  def home():
-      return jsonify({
-          "succss":True,
-          "massage":"Welcome to Agency flask app"
-      })
+  def index():
+      return "<h2> Welcome to last project </h2>"
 
   # -- Actors Region ----- #
   @app.route('/actors', methods=['GET'])
@@ -182,10 +179,6 @@ def create_app(test_config=None):
   return app
 
 app = create_app()
-
-@app.route('/',methods=['GET'])
-def index():
-    return "<h1> Welcome Home </h1>"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
