@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from sqlalchemy import Column, String, Integer, Date, create_engine 
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import json 
 
 
 # Access variables in env file
