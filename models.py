@@ -31,7 +31,7 @@ def setup_db(app, database_path=database_path):
     db.app = app
     # avoid leak connection
     db.init_app(app) 
-    db.drop_all() #comment this line after first run and delpoyment
+    #db.drop_all() #comment this line after first run and delpoyment
     db.create_all()
 
 # Actors table
