@@ -21,6 +21,8 @@ database_path = "postgresql://{}:{}@{}:{}/{}".format(
 # initial DB 
 db = SQLAlchemy()
 
+#TODO:: drop and create table .
+#TODO:: change database path in heroku.
 
 # Setup and config database path and creat tables if exists 
 def setup_db(app, database_path=database_path):
