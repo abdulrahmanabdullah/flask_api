@@ -18,8 +18,8 @@ db_port = os.getenv('DB_port')
 
 # Try to solve database path between heroku and sqlachemy.
 database_path = os.getenv('DATABASE_URL')
-if database_path and database_path.startswith("postgres://"):
-    database_path = database_path.replace("postgres://","postgrsql://",1)
+if database_path and database_path.startswith("postgresql://"):
+    database_path = database_path.replace("postgresql://","postgrs://",1)
 
 print(database_path)
 # use path for local work.
