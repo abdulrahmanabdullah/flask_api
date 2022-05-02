@@ -14,10 +14,11 @@ db_user = os.getenv('DB_user')
 db_pass = os.getenv('DB_pass')
 db_host = os.getenv('DB_host')
 db_port = os.getenv('DB_port')
-
+database_path = os.getenv('DATABASE_URL')
+# use path for local work.
 #database_path = "postgresql://{}:{}@{}:{}/{}".format(
 #    db_user, db_pass, db_host, db_port, db_name)
-database_path = "postgresql://zhvkjfxcxdikcd:c134fdc35e26448b54d196269bee82a05fcf963d01c97d9c31a2eb6bad663fbf@ec2-44-194-4-127.compute-1.amazonaws.com:5432/dmhh9jm24bqni"
+
 # initial DB 
 db = SQLAlchemy()
 
