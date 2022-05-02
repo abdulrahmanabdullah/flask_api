@@ -15,14 +15,12 @@ db_pass = os.getenv('DB_pass')
 db_host = os.getenv('DB_host')
 db_port = os.getenv('DB_port')
 
-database_path = "postgresql://{}:{}@{}:{}/{}".format(
-    db_user, db_pass, db_host, db_port, db_name)
-
+#database_path = "postgresql://{}:{}@{}:{}/{}".format(
+#    db_user, db_pass, db_host, db_port, db_name)
+database_path = "postgresql://zhvkjfxcxdikcd:c134fdc35e26448b54d196269bee82a05fcf963d01c97d9c31a2eb6bad663fbf@ec2-44-194-4-127.compute-1.amazonaws.com:5432/dmhh9jm24bqni"
 # initial DB 
 db = SQLAlchemy()
 
-#TODO:: drop and create table .
-#TODO:: change database path in heroku.
 
 # Setup and config database path and creat tables if exists 
 def setup_db(app, database_path=database_path):
