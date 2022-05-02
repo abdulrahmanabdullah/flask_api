@@ -1,4 +1,5 @@
 import os
+import re
 from dotenv import load_dotenv
 from sqlalchemy import Column, String, Integer, Date, create_engine 
 from flask_sqlalchemy import SQLAlchemy
@@ -14,7 +15,13 @@ db_user = os.getenv('DB_user')
 db_pass = os.getenv('DB_pass')
 db_host = os.getenv('DB_host')
 db_port = os.getenv('DB_port')
+
+# Try to solve database path between heroku and sqlachemy.
 database_path = os.getenv('DATABASE_URL')
+if database_path and database_path.startswith("postgres://"):
+    database_path = database_path.replace("postgres://","postgrsql://",1)
+
+print(database_path)
 # use path for local work.
 #database_path = "postgresql://{}:{}@{}:{}/{}".format(
 #    db_user, db_pass, db_host, db_port, db_name)
