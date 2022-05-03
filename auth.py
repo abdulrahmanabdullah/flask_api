@@ -1,4 +1,6 @@
 import json
+import os
+from dotenv import load_dotenv
 from flask import request, _request_ctx_stack
 from functools import wraps
 from jose import jwt
@@ -6,9 +8,11 @@ from urllib.request import urlopen
 
 
 
-AUTH0_DOMAIN = 'fsnd-coffe-shop.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIANC = 'https://localhost:8080/'
+# Access variables in env file
+load_dotenv()
+AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
+ALGORITHMS = os.getenv('ALGORITHMS')
+API_AUDIANC = os.getenv('API_AUDIANC')
 
 
 class AuthError(Exception):

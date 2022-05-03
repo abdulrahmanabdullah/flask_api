@@ -1,6 +1,17 @@
 # Flask api with authentcation 
 The Project API models a company that is responsible for creating movies and managing/assigning actors to those movies. This api is responsible for checking permissions and handling CRUD for an Actor and Movie model/
  ## Getting started
+
+**Motivations**
+This is the last project of the Udacity-Full-Stack-Nanodegree Course. It covers following technical topics in 1 app:
+
+-    Database modeling with postgres & sqlalchemy (see models.py)
+-    API to performance CRUD Operations on database with Flask (see app.py)
+-    Automated testing with Unittest (see test_app)
+-    Authorization & Role based Authentification with Auth0 (see auth.py)
+-    Deployment on Heroku
+---
+
  **Install Dependencies**
  **python3**
  Follow instructions to install the latest version of python for your platform in the [python docs](https://www.python.org/downloads/)
