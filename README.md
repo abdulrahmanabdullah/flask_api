@@ -91,7 +91,30 @@ response:
     "success": true
 }
 ```
+---
+### Testing 
+#### Testing remote server using postman
+ - Import the postman collection ./fake_data.json
+    * This collection has 3 roles that have specific permissions detailed below. 
+    * Roles
+        * Public:
+            * No access.
+        * Assistan JWT:
+            ```get:actors```,`get:movies`
+        * Direct JWT:
+            `get:actors`,`get:movies`,`post:actors`,`post:movies`
+        * Prod JWT - All permissions:
+            `get:actors`,`get:movies`,`post:actors`,`post:movies`,
+            `patch:actors`
+            `patch:movies`
+            `delete:actors`
+           `delete:movies`
+    * Once imported, Run the collection and play around with the endpoints within folders public, assistant, direct and prod.
+
+---    
+
 ### Live Demo
 [here](https://capstone-project-xy.herokuapp.com/) 
 
+---
 **developement by Abdulrahman**
