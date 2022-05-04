@@ -176,7 +176,54 @@ def create_app(test_config=None):
 
 ###-------  End Movie Region ------------###
 
+###-------  Error Handler Region ------------###
+  #Page not found
+  @app.errorhandler(404)
+  def not_found(error):
+      return jsonify({
+          'success':False,
+          'error':404,
+          'message':'not found'
+      }),404
+
+  #Unprocessable
+  @app.errorhandler(422)
+  def unprocessable(error):
+      return jsonify({
+          'success':False,
+          'error':422,
+          'message':'unprocessable'
+      }),422
+
+  #Interal server error
+  @app.errorhandler(500)
+  def internal_server_error(error):
+      return jsonify({
+          'success':False,
+          'error':500,
+          'message':'internal server error {}'.format(error)
+      }),500
+
+  #Method Not allowed
+  @app.errorhandler(405)
+  def method_not_allowed(error):
+      return jsonify({
+          'success':False,
+          'error':405,
+          'message':'Method not allowed {}'.format(error)
+      }),405
+
+  #Auth error
+  @app.errorhandler(AuthError)
+  def auth_err(error):
+      return jsonify({
+          'success':False,
+          'error':error.status_code,
+          'message':'unauthorized '.format(error.error)
+      }),error.status_code
+  
   return app
+
 
 app = create_app()
 
